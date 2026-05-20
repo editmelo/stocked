@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stocked — Brand Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --harbor: #2e6e8e;
+    --navy: #1b3a4b;
+    --ink: #132834;
+    --deep: #245770;
+    --sky: #4f97ad;
+    --eucalyptus: #7ba38c;
+    --sage: #a9c3b0;
+    --greige: #dfd6c1;
+    --cream: #f9f7f0;
+    --bone: #f0ecdf;
+    --hair: rgba(27, 58, 75, 0.16);
+    --display: "Manrope", system-ui, sans-serif;
+    --body: "DM Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 8% 0%, rgba(123, 163, 140, 0.16), transparent 42%),
+      radial-gradient(ellipse at 100% 6%, rgba(223, 214, 193, 0.4), transparent 40%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    padding: clamp(28px, 5vw, 70px) clamp(20px, 5vw, 60px) 90px;
+  }
+
+  .sheet { max-width: 1060px; margin: 0 auto; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--display);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-weight: 800;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .brandline { display: flex; align-items: center; gap: 12px; }
+  .brandline .wm {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: -0.03em;
+    color: var(--navy);
+  }
+  .meta {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.7;
+    letter-spacing: 0.04em;
+    color: var(--harbor);
+    text-transform: uppercase;
+  }
+
+  .title {
+    margin-top: clamp(28px, 5vw, 52px);
+    font-size: clamp(52px, 11vw, 124px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+  }
+  .title em {
+    font-style: normal;
+    color: var(--harbor);
+  }
+  .subtitle {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .subtitle p {
+    max-width: 46ch;
+    font-size: 15px;
+    color: #44525a;
+  }
+  .rule { height: 2px; background: var(--navy); border: 0; }
+  .masthead-rule { margin-top: 22px; }
+
+  /* ---------- Section scaffolding ---------- */
+  .section { margin-top: clamp(54px, 8vw, 96px); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 1px solid var(--hair);
+    padding-bottom: 14px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--harbor);
+    letter-spacing: 0.1em;
+  }
+  .section-name {
+    font-size: clamp(24px, 3.4vw, 34px);
+    letter-spacing: -0.025em;
+  }
+  .section-tag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6a7780;
+  }
+
+  .eyebrow {
+    font-family: var(--body);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--eucalyptus);
+  }
+
+  /* ---------- Logo section ---------- */
+  .logo-hero {
+    margin-top: 26px;
+    background: var(--bone);
+    border: 1px solid var(--hair);
+    border-radius: 20px;
+    padding: clamp(36px, 7vw, 78px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(14px, 2.4vw, 26px);
+  }
+  .logo-hero .wm {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(46px, 9vw, 96px);
+    letter-spacing: -0.04em;
+    color: var(--navy);
+  }
+
+  .logo-grid {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .logo-tile {
+    border: 1px solid var(--hair);
+    border-radius: 16px;
+    padding: 34px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    min-height: 188px;
+    justify-content: space-between;
+  }
+  .logo-tile .lockup {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex: 1;
+  }
+  .logo-tile .wm-sm {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -0.035em;
+  }
+  .logo-tile .cap {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6a7780;
+  }
+  .tile-cream { background: var(--cream); }
+  .tile-deep { background: var(--deep); }
+  .tile-deep .cap { color: rgba(249, 247, 240, 0.6); }
+  .tile-greige { background: var(--greige); }
+
+  .mark-breakdown {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .mb-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+  }
+  .mb-chip {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    flex-shrink: 0;
+    border: 1px solid var(--hair);
+  }
+  .mb-role {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6a7780;
+  }
+  .mb-name { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .mb-hex { font-family: var(--mono); font-size: 12px; color: var(--harbor); }
+
+  .note {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #44525a;
+    padding-left: 16px;
+    border-left: 3px solid var(--eucalyptus);
+  }
+
+  /* ---------- Colour section ---------- */
+  .swatches {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .swatch {
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #fff;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .swatch:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -14px rgba(19, 40, 52, 0.45);
+  }
+  .swatch-color {
+    height: 96px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+  .swatch-color span {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.18s;
+  }
+  .swatch:hover .swatch-color span { opacity: 1; }
+  .swatch-info { padding: 11px 12px 13px; }
+  .swatch-name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+  }
+  .swatch-hex {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--harbor);
+    margin-top: 3px;
+  }
+  .swatch-rgb {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #8a949b;
+    margin-top: 1px;
+  }
+  .swatch-role {
+    margin-top: 7px;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #58656d;
+  }
+
+  .scales { margin-top: 30px; display: flex; flex-direction: column; gap: 16px; }
+  .scale-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6a7780;
+    margin-bottom: 7px;
+  }
+  .scale-strip {
+    display: flex;
+    height: 58px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--hair);
+  }
+  .scale-seg {
+    flex: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 6px;
+    transition: flex-grow 0.3s ease;
+  }
+  .scale-seg:hover { flex-grow: 1.8; }
+  .scale-seg span {
+    font-family: var(--mono);
+    font-size: 9px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .scale-seg:hover span { opacity: 1; }
+
+  /* ---------- Typography section ---------- */
+  .type-grid {
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .type-card {
+    border: 1px solid var(--hair);
+    border-radius: 18px;
+    padding: clamp(22px, 3vw, 34px);
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .type-card.dark { background: var(--deep); border-color: transparent; }
+  .type-card.dark, .type-card.dark * { color: var(--cream); }
+  .type-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--harbor);
+  }
+  .type-card.dark .type-role { color: var(--sage); }
+  .type-name {
+    font-family: var(--display);
+    font-size: clamp(40px, 6vw, 60px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-top: 8px;
+  }
+  .type-aa {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 116px;
+    line-height: 1;
+    margin: 14px 0 6px;
+    letter-spacing: -0.03em;
+  }
+  .type-card.body-card .type-name,
+  .type-card.body-card .type-aa { font-family: var(--body); }
+  .type-glyphs {
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    color: #58656d;
+    word-spacing: 2px;
+    line-height: 1.7;
+  }
+  .type-card.dark .type-glyphs { color: rgba(249, 247, 240, 0.72); }
+  .type-weights {
+    margin-top: 18px;
+    border-top: 1px solid var(--hair);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .type-card.dark .type-weights { border-color: rgba(249, 247, 240, 0.2); }
+  .tw {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .tw-sample { font-family: var(--display); font-size: 19px; }
+  .body-card .tw-sample { font-family: var(--body); }
+  .tw-meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: #8a949b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .type-card.dark .tw-meta { color: rgba(249, 247, 240, 0.55); }
+
+  .type-usage {
+    margin-top: 16px;
+    border: 1px solid var(--hair);
+    border-radius: 18px;
+    padding: clamp(24px, 3.5vw, 40px);
+    background: var(--bone);
+  }
+  .usage-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--eucalyptus);
+  }
+  .usage-eyebrow::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 99px;
+    background: var(--eucalyptus);
+  }
+  .usage-h {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(30px, 4.6vw, 50px);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    margin-top: 14px;
+    color: var(--ink);
+  }
+  .usage-h em { font-style: normal; color: var(--harbor); }
+  .usage-body {
+    margin-top: 14px;
+    max-width: 56ch;
+    font-size: 15px;
+    color: #44525a;
+  }
+  .usage-specs {
+    margin-top: 20px;
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #6a7780;
+  }
+  .usage-specs b { color: var(--navy); font-weight: 500; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 70px;
+    border-top: 1px solid var(--hair);
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6a7780;
+  }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 26px;
+    transform: translate(-50%, 22px);
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    padding: 11px 19px;
+    border-radius: 999px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.24s, transform 0.24s;
+    z-index: 50;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- Load-in ---------- */
+  .section, .masthead, .title, .subtitle {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  .masthead { animation-delay: 0.02s; }
+  .title { animation-delay: 0.1s; }
+  .subtitle { animation-delay: 0.16s; }
+  .section:nth-of-type(1) { animation-delay: 0.22s; }
+  .section:nth-of-type(2) { animation-delay: 0.3s; }
+  .section:nth-of-type(3) { animation-delay: 0.38s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 720px) {
+    .swatches { grid-template-columns: repeat(2, 1fr); }
+    .logo-grid, .mark-breakdown, .type-grid { grid-template-columns: 1fr; }
+    .type-aa { font-size: 90px; }
+    .font-dl { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Download button ---------- */
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--harbor);
+    color: var(--cream);
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 13.5px;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.18s ease;
+  }
+  .dl-btn:hover { background: var(--deep); }
+
+  /* ---------- Font downloads ---------- */
+  .fonts-block {
+    margin-top: 16px;
+    border: 1px solid var(--hair);
+    border-radius: 18px;
+    padding: clamp(22px, 3vw, 34px);
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .fonts-h {
+    margin-top: 8px;
+    font-size: clamp(20px, 2.6vw, 26px);
+    letter-spacing: -0.02em;
+  }
+  .fonts-p {
+    margin-top: 10px;
+    max-width: 60ch;
+    font-size: 14px;
+    color: #44525a;
+  }
+  .font-dl {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .font-dl a {
+    display: block;
+    border: 1px solid var(--hair);
+    border-radius: 13px;
+    padding: 16px 18px;
+    text-decoration: none;
+    background: var(--cream);
+    transition: border-color 0.18s ease, background 0.18s ease;
+  }
+  .font-dl a:hover { border-color: var(--harbor); background: #fff; }
+  .font-dl .fn {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .font-dl .fmeta { font-size: 11.5px; color: #6a7780; margin-top: 3px; }
+  .font-dl .furl {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--harbor);
+    margin-top: 9px;
+    word-break: break-all;
+  }
+  .fonts-note { margin-top: 14px; font-size: 12.5px; color: #6a7780; }
+
+  /* ============================================================
+     Print / PDF — Letter, full-bleed cream, paginated by section
+     ============================================================ */
+  @page {
+    size: Letter;
+    margin: 0;
+  }
+  @media print {
+    body {
+      padding: 13mm 13mm 11mm;
+      background-image: none;
+      background-color: var(--cream);
+    }
+    .sheet { max-width: 100%; }
+
+    /* neutralise the load-in animation so nothing prints blank */
+    .section, .masthead, .title, .subtitle {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .title { font-size: 66px; }
+    .section { margin-top: 26px; }
+    .section + .section { break-before: page; }
+
+    /* drop screen-only affordances */
+    .toast, .dl-btn { display: none !important; }
+    .swatch-color span { display: none !important; }
+
+    /* reveal hover-gated content for static print */
+    .scale-seg span { opacity: 1 !important; }
+    .swatch:hover { transform: none !important; box-shadow: none !important; }
+    .scale-seg:hover { flex-grow: 1 !important; }
+
+    /* keep blocks whole across page breaks */
+    .section-head, .logo-hero, .logo-grid, .mark-breakdown, .note,
+    .swatches, .scales, .scale-strip, .swatch, .type-card,
+    .type-usage, .fonts-block, footer {
+      break-inside: avoid;
+    }
+
+    /* compact Typography so the section + footer fit one page */
+    .type-grid { margin-top: 12px; }
+    .type-card { padding: 16px; }
+    .type-name { font-size: 30px; }
+    .type-aa { font-size: 48px; margin: 2px 0; }
+    .type-glyphs { line-height: 1.45; font-size: 11px; }
+    .type-weights { margin-top: 7px; padding-top: 7px; gap: 3px; }
+    .tw-sample { font-size: 15px; }
+    .type-usage { margin-top: 9px; padding: 16px; }
+    .usage-h { font-size: 30px; margin-top: 8px; }
+    .usage-body { margin-top: 8px; font-size: 13px; }
+    .usage-specs { margin-top: 12px; gap: 16px; }
+    .fonts-block { margin-top: 9px; padding: 16px; }
+    .fonts-h { font-size: 18px; }
+    .fonts-p { margin-top: 7px; font-size: 12.5px; }
+    .font-dl { margin-top: 10px; }
+    .font-dl a { padding: 11px 13px; }
+    .fonts-note { margin-top: 8px; font-size: 11.5px; }
+    footer { margin-top: 14px; padding-top: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ============ Masthead ============ -->
+  <header class="masthead" id="masthead">
+    <div class="brandline">
+      <span id="mast-mark"></span>
+      <span class="wm">stocked</span>
+    </div>
+    <div class="meta">
+      Visual Identity<br />
+      Harbor System<br />
+      Brand Sheet · 2026
+    </div>
+  </header>
+  <hr class="rule masthead-rule" />
+
+  <h1 class="title">Brand <em>Sheet</em></h1>
+  <div class="subtitle">
+    <p>
+      The working colour, type and logo specification for Stocked, LLC — a
+      calm, refreshing, dependable identity built on blues, greens and tans.
+      Click any colour to copy its hex.
+    </p>
+    <a class="dl-btn" href="/stocked-brand-sheet.pdf" download>
+      Download PDF
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+        <path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+
+  <!-- ============ 01 · Logo ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-name">Logo</h2>
+      <span class="section-tag">Mark + Wordmark</span>
+    </div>
+
+    <div class="logo-hero">
+      <span id="hero-mark"></span>
+      <span class="wm">stocked</span>
+    </div>
+
+    <div class="logo-grid">
+      <div class="logo-tile tile-cream">
+        <div class="lockup">
+          <span id="tile-mark-1"></span>
+          <span class="wm-sm" style="color:var(--navy)">stocked</span>
+        </div>
+        <span class="cap">Primary · on Cream</span>
+      </div>
+      <div class="logo-tile tile-deep">
+        <div class="lockup">
+          <span id="tile-mark-2"></span>
+          <span class="wm-sm" style="color:var(--cream)">stocked</span>
+        </div>
+        <span class="cap">Reversed · on Deep Harbor</span>
+      </div>
+      <div class="logo-tile tile-greige">
+        <div class="lockup">
+          <span id="tile-mark-3"></span>
+        </div>
+        <span class="cap">Mark only</span>
+      </div>
+    </div>
+
+    <div class="mark-breakdown">
+      <div class="mb-item" data-hex="#1B3A4B">
+        <span class="mb-chip" style="background:#1b3a4b"></span>
+        <div>
+          <div class="mb-role">Box outline</div>
+          <div class="mb-name">Navy</div>
+          <div class="mb-hex">#1B3A4B</div>
+        </div>
+      </div>
+      <div class="mb-item" data-hex="#DFD6C1">
+        <span class="mb-chip" style="background:#dfd6c1"></span>
+        <div>
+          <div class="mb-role">Box fill (50% opacity)</div>
+          <div class="mb-name">Greige</div>
+          <div class="mb-hex">#DFD6C1</div>
+        </div>
+      </div>
+      <div class="mb-item" data-hex="#2E6E8E">
+        <span class="mb-chip" style="background:#2e6e8e"></span>
+        <div>
+          <div class="mb-role">The &ldquo;T&rdquo;</div>
+          <div class="mb-name">Harbor Blue</div>
+          <div class="mb-hex">#2E6E8E</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="note">
+      The mark is an open box with the &ldquo;T&rdquo; of Stocked rising from
+      inside — organised, ready, dependable. Wordmark is set in Manrope
+      ExtraBold, lowercase, tracking &minus;0.04em.
+    </p>
+  </section>
+
+  <!-- ============ 02 · Colour ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-name">Colour</h2>
+      <span class="section-tag">Harbor Palette</span>
+    </div>
+
+    <div class="swatches" id="swatches"></div>
+
+    <div class="scales" id="scales"></div>
+  </section>
+
+  <!-- ============ 03 · Typography ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-name">Typography</h2>
+      <span class="section-tag">Manrope + DM Sans</span>
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card dark">
+        <div class="type-role">Display / Headings</div>
+        <div class="type-name">Manrope</div>
+        <div class="type-aa">Aa</div>
+        <div class="type-glyphs">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
+          abcdefghijklmnopqrstuvwxyz<br />
+          0123456789 &amp; ? ! — •
+        </div>
+        <div class="type-weights">
+          <div class="tw">
+            <span class="tw-sample" style="font-weight:700">Reliable &amp; steady</span>
+            <span class="tw-meta">Bold · 700</span>
+          </div>
+          <div class="tw">
+            <span class="tw-sample" style="font-weight:800">Reliable &amp; steady</span>
+            <span class="tw-meta">ExtraBold · 800</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="type-card body-card">
+        <div class="type-role">Body / Interface</div>
+        <div class="type-name">DM Sans</div>
+        <div class="type-aa">Aa</div>
+        <div class="type-glyphs">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
+          abcdefghijklmnopqrstuvwxyz<br />
+          0123456789 &amp; ? ! — •
+        </div>
+        <div class="type-weights">
+          <div class="tw">
+            <span class="tw-sample" style="font-weight:400">Customer-ready</span>
+            <span class="tw-meta">Regular · 400</span>
+          </div>
+          <div class="tw">
+            <span class="tw-sample" style="font-weight:500">Customer-ready</span>
+            <span class="tw-meta">Medium · 500</span>
+          </div>
+          <div class="tw">
+            <span class="tw-sample" style="font-weight:600">Customer-ready</span>
+            <span class="tw-meta">SemiBold · 600</span>
+          </div>
+          <div class="tw">
+            <span class="tw-sample" style="font-weight:700">Customer-ready</span>
+            <span class="tw-meta">Bold · 700</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-usage">
+      <span class="usage-eyebrow">On-site retail support</span>
+      <div class="usage-h">Retail support <em>you can count on.</em></div>
+      <p class="usage-body">
+        Headlines in Manrope ExtraBold with tight &minus;0.02em tracking. Body
+        copy in DM Sans Regular at a comfortable reading size. The eyebrow
+        label above pairs DM Sans SemiBold, uppercase, 0.18em letter-spacing,
+        in Eucalyptus green.
+      </p>
+      <div class="usage-specs">
+        <span>Headings — <b>Manrope ExtraBold</b></span>
+        <span>Body — <b>DM Sans Regular</b></span>
+        <span>Labels — <b>DM Sans SemiBold · 0.18em</b></span>
+        <span>Source — <b>Google Fonts (free)</b></span>
+      </div>
+    </div>
+
+    <div class="fonts-block">
+      <div class="type-role">Get the fonts</div>
+      <h3 class="fonts-h">Both typefaces are free to download</h3>
+      <p class="fonts-p">
+        Manrope and DM Sans are open-source and licensed under the SIL Open
+        Font License — free for commercial use, print, and web. Download the
+        full families from Google Fonts:
+      </p>
+      <div class="font-dl">
+        <a href="https://fonts.google.com/specimen/Manrope" target="_blank" rel="noopener">
+          <div class="fn">Manrope &rarr;</div>
+          <div class="fmeta">Display / headings · Free · SIL Open Font License</div>
+          <div class="furl">fonts.google.com/specimen/Manrope</div>
+        </a>
+        <a href="https://fonts.google.com/specimen/DM+Sans" target="_blank" rel="noopener">
+          <div class="fn">DM Sans &rarr;</div>
+          <div class="fmeta">Body / interface · Free · SIL Open Font License</div>
+          <div class="furl">fonts.google.com/specimen/DM+Sans</div>
+        </a>
+      </div>
+      <p class="fonts-note">
+        On Google Fonts, click <b>“Get font”</b> &rarr; <b>“Download all”</b>
+        to get the complete family as .ttf files.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Stocked, LLC — Harbor Visual Identity</span>
+    <span>Prepared by Edit Me Lo</span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+  /* ---------- Logo mark ---------- */
+  function logoMark(stroke, accent, tan, size) {
+    return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" fill="none" style="display:block">
+      <path d="M8 18 L8 40 L40 40 L40 18" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="${tan}" fill-opacity="0.5"/>
+      <path d="M8 18 L4 10 L44 10 L40 18 Z" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+      <path d="M8 18 L14 8 L34 8 L40 18" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M16 22 L32 22 M24 22 L24 36" stroke="${accent}" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>`;
+  }
+  document.getElementById("mast-mark").innerHTML = logoMark("#1b3a4b", "#2e6e8e", "#dfd6c1", 40);
+  document.getElementById("hero-mark").innerHTML = logoMark("#1b3a4b", "#2e6e8e", "#dfd6c1", 92);
+  document.getElementById("tile-mark-1").innerHTML = logoMark("#1b3a4b", "#2e6e8e", "#dfd6c1", 38);
+  document.getElementById("tile-mark-2").innerHTML = logoMark("#f9f7f0", "#a9c3b0", "#dfd6c1", 38);
+  document.getElementById("tile-mark-3").innerHTML = logoMark("#1b3a4b", "#2e6e8e", "#dfd6c1", 60);
+
+  /* ---------- Colour data ---------- */
+  const core = [
+    { name: "Harbor Blue", hex: "#2E6E8E", role: "Primary brand colour — buttons, links, the logo T" },
+    { name: "Navy",        hex: "#1B3A4B", role: "Body text, logo outline, deep UI" },
+    { name: "Ink",         hex: "#132834", role: "Headlines — the darkest tone" },
+    { name: "Deep Harbor", hex: "#245770", role: "Dark section panels & cards" },
+    { name: "Sky Teal",    hex: "#4F97AD", role: "Bright, refreshing accent" },
+    { name: "Eucalyptus",  hex: "#7BA38C", role: "Secondary brand colour — green accent" },
+    { name: "Sage Mist",   hex: "#A9C3B0", role: "Soft accent, highlights, selection" },
+    { name: "Greige",      hex: "#DFD6C1", role: "Warm neutral — logo box fill, panels" },
+    { name: "Cream",       hex: "#F9F7F0", role: "Primary background" },
+    { name: "Bone",        hex: "#F0ECDF", role: "Secondary surface background" },
+  ];
+
+  const scales = [
+    { label: "Blue scale", colors: ["#EDF3F5","#D4E4E9","#AACDD6","#7EB0BD","#4F97AD","#3A8197","#2E6E8E","#245770","#1F4659","#1B3A4B","#132834"] },
+    { label: "Green scale", colors: ["#EEF4F0","#E2EDE6","#C7DDCE","#A9C3B0","#7BA38C","#5F8A72","#4C6A56","#3A5343"] },
+    { label: "Greige scale", colors: ["#F8F5EE","#EFE9DA","#DFD6C1","#CBBD9E","#B5A47E","#9A8862"] },
+  ];
+
+  function rgb(hex) {
+    return [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)).join(", ");
+  }
+  function isLight(hex) {
+    const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255);
+    return 0.299 * r + 0.587 * g + 0.114 * b > 0.62;
+  }
+
+  /* ---------- Build swatches ---------- */
+  const sw = document.getElementById("swatches");
+  core.forEach(c => {
+    const txt = isLight(c.hex) ? "#132834" : "#f9f7f0";
+    const chipBg = isLight(c.hex) ? "rgba(19,40,52,0.08)" : "rgba(255,255,255,0.16)";
+    const el = document.createElement("div");
+    el.className = "swatch";
+    el.dataset.hex = c.hex;
+    el.innerHTML = `
+      <div class="swatch-color" style="background:${c.hex}">
+        <span style="color:${txt};background:${chipBg}">COPY</span>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">${c.name}</div>
+        <div class="swatch-hex">${c.hex}</div>
+        <div class="swatch-rgb">rgb(${rgb(c.hex)})</div>
+        <div class="swatch-role">${c.role}</div>
+      </div>`;
+    sw.appendChild(el);
+  });
+
+  /* ---------- Build scales ---------- */
+  const sc = document.getElementById("scales");
+  scales.forEach(s => {
+    const wrap = document.createElement("div");
+    const strip = s.colors.map(hex => {
+      const txt = isLight(hex) ? "#132834" : "#f9f7f0";
+      return `<div class="scale-seg" data-hex="${hex}" style="background:${hex}">
+        <span style="color:${txt}">${hex}</span></div>`;
+    }).join("");
+    wrap.innerHTML = `<div class="scale-label">${s.label} · ${s.colors.length} steps</div>
+      <div class="scale-strip">${strip}</div>`;
+    sc.appendChild(wrap);
+  });
+
+  /* ---------- Copy to clipboard ---------- */
+  const toast = document.getElementById("toast");
+  let toastTimer;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+  }
+  document.addEventListener("click", e => {
+    const t = e.target.closest("[data-hex]");
+    if (!t) return;
+    const hex = t.dataset.hex.toUpperCase();
+    navigator.clipboard.writeText(hex)
+      .then(() => showToast("Copied  " + hex))
+      .catch(() => showToast(hex));
+  });
+</script>
+</body>
+</html>
