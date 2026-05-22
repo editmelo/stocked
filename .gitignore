@@ -1,12 +1,11 @@
 # dependencies
 node_modules/
-site/node_modules/
 
 # next.js build output
-site/.next/
-site/out/
-site/build/
-site/next-env.d.ts
+.next/
+out/
+build/
+next-env.d.ts
 
 # typescript build cache
 *.tsbuildinfo
@@ -14,8 +13,6 @@ site/next-env.d.ts
 # environment files
 .env
 .env.*
-site/.env
-site/.env.*
 
 # logs
 npm-debug.log*
@@ -27,6 +24,9 @@ yarn-error.log*
 *.pem
 .vscode/
 .idea/
+
+# vercel
+.vercel
 
 # adobe illustrator / app temp + lock files
 *.tmp
