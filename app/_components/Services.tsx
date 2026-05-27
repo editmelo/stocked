@@ -155,7 +155,7 @@ function ServiceCard({
       >
         {eyebrow}
       </p>
-      <h3 className="mt-3 font-display text-3xl md:text-4xl font-extrabold tracking-tight">
+      <h3 className={`mt-3 font-display text-3xl md:text-4xl font-extrabold tracking-tight ${isOps ? "text-cream" : ""}`}>
         {title}
       </h3>
       <p className={`mt-3 text-base md:text-lg leading-relaxed ${isOps ? "text-cream/80" : "text-pine/75"}`}>

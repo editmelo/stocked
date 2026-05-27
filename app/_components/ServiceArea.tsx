@@ -17,7 +17,7 @@ export function ServiceArea() {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-300">
             Service area
           </p>
-          <h2 className="mt-4 font-display text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight text-balance">
+          <h2 className="mt-4 font-display text-4xl md:text-5xl font-extrabold leading-[1.05] tracking-tight text-balance text-cream">
             Indianapolis-based.
             <br />
             <span className="text-tan-200">Serving the Midwest.</span>
