@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stocked — Brighter Palette Options for Andre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f3efe4;
+    --card: #fbfaf4;
+    --ink: #14304b;
+    --muted: #5d6b73;
+    --hair: rgba(20, 48, 75, 0.14);
+    --display: "Manrope", system-ui, sans-serif;
+    --body: "DM Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 14% 0%, rgba(94, 186, 223, 0.20), transparent 46%),
+      radial-gradient(ellipse at 92% 8%, rgba(242, 168, 139, 0.22), transparent 42%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 56px) 90px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+
+  /* ---------- Header ---------- */
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .kicker::after { content: ""; flex: 1; height: 1px; background: var(--hair); }
+  h1.title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(40px, 7vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-top: 18px;
+  }
+  h1.title em { font-style: normal; color: #0E8FBE; }
+  .lede {
+    margin-top: 20px;
+    max-width: 60ch;
+    font-size: clamp(15px, 1.6vw, 17px);
+    color: #45525c;
+  }
+  .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--hair);
+    color: var(--muted);
+    background: rgba(255,255,255,0.6);
+  }
+
+  /* ---------- Quick compare strip ---------- */
+  .qc {
+    margin-top: clamp(32px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .qc-card {
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    border: 1px solid var(--hair);
+    min-height: 144px;
+    justify-content: space-between;
+  }
+  .qc-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+  }
+  .qc-cta {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  /* ---------- Section heading ---------- */
+  .section { margin-top: clamp(48px, 7vw, 80px); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 1px solid var(--hair);
+    padding-bottom: 14px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .section-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(24px, 3.4vw, 34px);
+    letter-spacing: -0.025em;
+  }
+  .section-tag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* ---------- Option cards ---------- */
+  .options { margin-top: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; gap: clamp(26px, 4vw, 44px); }
+  .opt {
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 22px;
+    padding: clamp(22px, 3vw, 38px);
+    box-shadow: 0 1px 2px rgba(20, 48, 75, 0.04), 0 22px 48px -28px rgba(20, 48, 75, 0.35);
+    opacity: 0;
+    transform: translateY(18px);
+    animation: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  .opt:nth-of-type(1) { animation-delay: 0.05s; }
+  .opt:nth-of-type(2) { animation-delay: 0.15s; }
+  .opt:nth-of-type(3) { animation-delay: 0.25s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  .opt-head { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+  .opt-num {
+    font-family: var(--display);
+    font-size: clamp(38px, 5.6vw, 58px);
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(20, 48, 75, 0.22);
+  }
+  .opt-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(26px, 3.4vw, 36px);
+    letter-spacing: -0.02em;
+  }
+  .opt-vibe {
+    font-size: 14px;
+    color: var(--muted);
+    flex: 1 1 260px;
+  }
+  .pop {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  /* ---------- Strip + legend ---------- */
+  .strip {
+    margin-top: 22px;
+    display: flex;
+    height: clamp(106px, 14vw, 138px);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--hair);
+  }
+  .swatch {
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+    transition: flex-grow 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+  }
+  .swatch:hover { flex-grow: 2.2; }
+  .swatch .hf {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.22s, transform 0.22s;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(4px);
+    padding: 4px 9px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .swatch:hover .hf { opacity: 1; transform: translateY(0); }
+  .legend {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+  }
+  .legend-item { cursor: pointer; padding: 7px 4px; border-radius: 8px; transition: background 0.18s; }
+  .legend-item:hover { background: rgba(20, 48, 75, 0.05); }
+  .legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid var(--hair);
+    margin-bottom: 5px;
+  }
+  .legend-role {
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.25;
+  }
+  .legend-hex {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+
+  /* ---------- Preview ---------- */
+  .pl {
+    margin-top: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pl::after { content: ""; flex: 1; height: 1px; background: var(--hair); }
+  .mock {
+    margin-top: 14px;
+    border-radius: 16px;
+    padding: clamp(22px, 3.4vw, 40px);
+    border: 1px solid var(--hair);
+    position: relative;
+    overflow: hidden;
+  }
+  .mock-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px; align-items: center; }
+  .mock-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .mock-eyebrow .dot { width: 6px; height: 6px; border-radius: 999px; }
+  .mock-h {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(26px, 3.7vw, 42px);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin-top: 16px;
+  }
+  .mock-p {
+    margin-top: 12px;
+    font-size: 15px;
+    max-width: 38ch;
+  }
+  .mock-actions { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    cursor: default;
+  }
+  .pop-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: #fff;
+  }
+  .mock-stats { display: flex; flex-direction: column; gap: 10px; }
+  .stat { border-radius: 12px; padding: 14px 16px; border: 1px solid; }
+  .stat-num { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+  .stat-label { font-size: 12px; margin-top: 2px; }
+  .mock-box { position: absolute; right: -22px; bottom: -22px; opacity: 0.5; }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed; left: 50%; bottom: 26px;
+    transform: translate(-50%, 22px);
+    background: #14304b; color: #fbfaf4;
+    font-family: var(--mono);
+    font-size: 13px; padding: 11px 19px; border-radius: 999px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.22s, transform 0.22s;
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--hair);
+    padding-top: 22px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 720px) {
+    .qc { grid-template-columns: 1fr; }
+    .legend { grid-template-columns: repeat(4, 1fr); }
+    .mock-grid { grid-template-columns: 1fr; }
+    .mock-box { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Edit Me Lo &nbsp;·&nbsp; Stocked, LLC &nbsp;·&nbsp; For Andre</div>
+    <h1 class="title">Brighter <em>palettes</em>.</h1>
+    <p class="lede">
+      Three direction options that keep the calm, reliable feel of the
+      brand but pump up the brightness so the site catches a busy retail
+      buyer's eye. Each option includes a "pop" accent — a small bright
+      colour reserved for buttons, badges and tiny highlights — which is
+      what was missing from the first round. Click any colour to copy its
+      hex.
+    </p>
+    <div class="tags">
+      <span class="tag">03 directions</span>
+      <span class="tag">Brighter, livelier</span>
+      <span class="tag">Built for dollar-store buyers</span>
+      <span class="tag">No red · No neon</span>
+    </div>
+  </header>
+
+  <!-- ============ Quick compare ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">QC</span>
+      <h2 class="section-name">Quick compare</h2>
+      <span class="section-tag">Same button, three palettes</span>
+    </div>
+    <div class="qc" id="qc"></div>
+  </section>
+
+  <!-- ============ Options ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">Options</span>
+      <h2 class="section-name">Pick a direction</h2>
+      <span class="section-tag">Live preview · scroll</span>
+    </div>
+    <div class="options" id="options"></div>
+  </section>
+
+  <footer>
+    Prepared by Edit Me Lo · Spring 2026 · Click any swatch to copy its hex
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+  const PALETTES = [
+    {
+      num: "01",
+      name: "Lift",
+      vibe: "Familiar Harbor feel, but cleaner and crisper. The most conservative jump — pumps brightness without changing the brand's soul. Adds a warm gold pop for energy.",
+      colors: [
+        { role: "Deep Anchor",  hex: "#143A55" },
+        { role: "Primary Blue", hex: "#1F88AE" },
+        { role: "Sky Pop",      hex: "#4DB0CE" },
+        { role: "Green Accent", hex: "#7CBE96" },
+        { role: "Mint Glow",    hex: "#BFDFCA" },
+        { role: "Warm Sand",    hex: "#F1DFB1" },
+        { role: "Surface",      hex: "#F2EAD5" },
+        { role: "Background",   hex: "#FBF8EE" },
+      ],
+      pop: { name: "Sunray Gold", hex: "#E6BB47" },
+      preview: {
+        bg: "#FBF8EE", text: "#143A55", muted: "#475a68",
+        primary: "#1F88AE", primaryText: "#FBF8EE",
+        accent: "#7CBE96", accentSoft: "#E2F0E5", accentText: "#365B45",
+        border: "rgba(20,58,85,0.14)", warm: "#F1DFB1",
+        pop: "#E6BB47", popText: "#3C2E0B",
+      },
+    },
+    {
+      num: "02",
+      name: "Open Sky",
+      vibe: "The biggest brightness jump — clearer cobalt blues, more white space, fresh energy. Best for genuine 'pop' that still feels professional. Warm peach pop adds friendliness.",
+      colors: [
+        { role: "Deepest",     hex: "#103A57" },
+        { role: "Primary",     hex: "#0E8FBE" },
+        { role: "Bright Sky",  hex: "#5EBADF" },
+        { role: "Fresh Green", hex: "#5EB680" },
+        { role: "Soft Mint",   hex: "#C8E7CC" },
+        { role: "Warm Cream",  hex: "#FBF5DF" },
+        { role: "Surface",     hex: "#F2EDD8" },
+        { role: "Background",  hex: "#FFFDF6" },
+      ],
+      pop: { name: "Sun Peach", hex: "#F2A65A" },
+      preview: {
+        bg: "#FFFDF6", text: "#103A57", muted: "#4d5e6c",
+        primary: "#0E8FBE", primaryText: "#FFFDF6",
+        accent: "#5EB680", accentSoft: "#DEEFE3", accentText: "#1F5234",
+        border: "rgba(16,58,87,0.15)", warm: "#FBF5DF",
+        pop: "#F2A65A", popText: "#4A2208",
+      },
+    },
+    {
+      num: "03",
+      name: "Coastal Confidence",
+      vibe: "Brighter teal-turquoise + warmer green + buttery cream. The friendliest and most inviting of the three — feels like a partner you actually want to work with. Coral peach pop adds warmth.",
+      colors: [
+        { role: "Deep Teal",    hex: "#0E4252" },
+        { role: "Primary Teal", hex: "#0EA3B5" },
+        { role: "Aqua",         hex: "#7AC9D2" },
+        { role: "Warm Green",   hex: "#7AB67E" },
+        { role: "Sage Light",   hex: "#BFDABF" },
+        { role: "Buttercream",  hex: "#F5E2A3" },
+        { role: "Surface",      hex: "#F0E5C6" },
+        { role: "Background",   hex: "#FBF5E4" },
+      ],
+      pop: { name: "Coral Peach", hex: "#F2A88B" },
+      preview: {
+        bg: "#FBF5E4", text: "#0E4252", muted: "#46606b",
+        primary: "#0EA3B5", primaryText: "#FBF5E4",
+        accent: "#7AB67E", accentSoft: "#D9E9D9", accentText: "#2E5B30",
+        border: "rgba(14,66,82,0.16)", warm: "#F5E2A3",
+        pop: "#F2A88B", popText: "#5B2613",
+      },
+    },
+  ];
+
+  function lum(hex) {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+    return 0.299 * r + 0.587 * g + 0.114 * b;
+  }
+
+  function strip(p) {
+    return p.colors.map(c => {
+      const onLight = lum(c.hex) > 0.62;
+      const txt = onLight ? "#14304b" : "#fbfaf4";
+      return `<div class="swatch" data-hex="${c.hex}" style="background:${c.hex}">
+        <span class="hf" style="color:${txt}">${c.hex.toUpperCase()}</span></div>`;
+    }).join("");
+  }
+
+  function legend(p) {
+    return p.colors.map(c => `
+      <div class="legend-item" data-hex="${c.hex}">
+        <div class="legend-dot" style="background:${c.hex}"></div>
+        <div class="legend-role">${c.role}</div>
+        <div class="legend-hex">${c.hex.toUpperCase()}</div>
+      </div>`).join("");
+  }
+
+  function boxSvg(stroke, fill) {
+    return `<svg class="mock-box" width="150" height="150" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M16 38 L16 80 L84 80 L84 38" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M16 38 L24 22 L76 22 L84 38 Z" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M50 22 L50 80" stroke="${stroke}" stroke-width="2.5" stroke-dasharray="4 4"/>
+    </svg>`;
+  }
+
+  function mock(p) {
+    const v = p.preview;
+    return `<div class="mock" style="background:${v.bg}">
+      ${boxSvg(v.accent, v.warm)}
+      <div class="mock-grid">
+        <div>
+          <span class="mock-eyebrow" style="background:${v.accentSoft};color:${v.accentText}">
+            <span class="dot" style="background:${v.accent}"></span>On-site retail support
+          </span>
+          <div class="mock-h" style="color:${v.text}">
+            You can count on <span style="color:${v.primary}">Stocked.</span>
+          </div>
+          <p class="mock-p" style="color:${v.muted}">
+            Reliable, professional support that keeps your shelves full and
+            your store customer-ready.
+          </p>
+          <div class="mock-actions">
+            <span class="btn" style="background:${v.primary};color:${v.primaryText}">Get a quote &rarr;</span>
+            <span class="btn" style="border-color:${v.border};color:${v.text}">Our services</span>
+            <span class="pop-pill" style="background:${v.pop};color:${v.popText}">
+              <span style="width:6px;height:6px;border-radius:99px;background:${v.popText};opacity:0.6"></span>
+              New project
+            </span>
+          </div>
+        </div>
+        <div class="mock-stats">
+          <div class="stat" style="background:${v.accentSoft};border-color:${v.border}">
+            <div class="stat-num" style="color:${v.primary}">20+</div>
+            <div class="stat-label" style="color:${v.muted}">Years of retail experience</div>
+          </div>
+          <div class="stat" style="background:${v.warm};border-color:${v.border}">
+            <div class="stat-num" style="color:${v.text}">Platinum</div>
+            <div class="stat-label" style="color:${v.muted}">Blue Wave certified tier</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function optCard(p) {
+    const el = document.createElement("article");
+    el.className = "opt";
+    el.innerHTML = `
+      <div class="opt-head">
+        <span class="opt-num">${p.num}</span>
+        <span class="opt-name">${p.name}</span>
+        <span class="opt-vibe">${p.vibe}</span>
+        <span class="pop" style="background:${p.pop.hex}" data-hex="${p.pop.hex}">
+          POP &nbsp;${p.pop.name} &nbsp;<span style="opacity:0.7">${p.pop.hex}</span>
+        </span>
+      </div>
+      <div class="strip">${strip(p)}</div>
+      <div class="legend">${legend(p)}</div>
+      <div class="pl">In context</div>
+      ${mock(p)}
+    `;
+    return el;
+  }
+
+  // Quick compare
+  const qc = document.getElementById("qc");
+  PALETTES.forEach(p => {
+    const v = p.preview;
+    const card = document.createElement("div");
+    card.className = "qc-card";
+    card.style.background = v.bg;
+    card.innerHTML = `
+      <div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:${v.muted};margin-bottom:6px">OPTION ${p.num}</div>
+        <div class="qc-name" style="color:${v.text}">${p.name}</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span class="qc-cta" style="background:${v.primary};color:${v.primaryText}">Get a quote &rarr;</span>
+        <span class="qc-cta" style="background:${v.pop};color:${v.popText};font-size:11px;padding:7px 11px">${p.pop.name}</span>
+      </div>`;
+    qc.appendChild(card);
+  });
+
+  // Main options
+  const mount = document.getElementById("options");
+  PALETTES.forEach(p => mount.appendChild(optCard(p)));
+
+  // Copy
+  const toast = document.getElementById("toast");
+  let toastTimer;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+  }
+  document.addEventListener("click", e => {
+    const t = e.target.closest("[data-hex]");
+    if (!t) return;
+    const hex = t.dataset.hex.toUpperCase();
+    navigator.clipboard.writeText(hex)
+      .then(() => showToast("Copied  " + hex))
+      .catch(() => showToast(hex));
+  });
+</script>
+</body>
+</html>
