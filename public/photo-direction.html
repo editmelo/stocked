@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stocked — Photo Direction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f3efe4;
+    --card: #fbfaf4;
+    --ink: #143a55;
+    --muted: #5d6b73;
+    --hair: rgba(20, 58, 85, 0.14);
+    --harbor: #2e6e8e;
+    --sage: #7ba38c;
+    --warm: #dfd6c1;
+    --display: "Manrope", system-ui, sans-serif;
+    --body: "DM Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 14% 0%, rgba(123, 163, 140, 0.18), transparent 46%),
+      radial-gradient(ellipse at 92% 8%, rgba(223, 214, 193, 0.42), transparent 42%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--body);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+    padding: clamp(28px, 5vw, 64px) clamp(20px, 5vw, 56px) 90px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .kicker::after { content: ""; flex: 1; height: 1px; background: var(--hair); }
+  h1.title {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(40px, 7vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-top: 18px;
+  }
+  h1.title em { font-style: normal; color: var(--harbor); }
+  .lede {
+    margin-top: 20px;
+    max-width: 60ch;
+    font-size: clamp(15px, 1.6vw, 17px);
+    color: #45525c;
+  }
+  .tags { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--hair);
+    color: var(--muted);
+    background: rgba(255,255,255,0.6);
+  }
+
+  /* ---------- Rules ---------- */
+  .rules {
+    margin-top: clamp(36px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .rule {
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 16px;
+    padding: 22px 24px;
+  }
+  .rule h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .rule.do h3 { color: #2e7a52; }
+  .rule.dont h3 { color: #a64025; }
+  .rule ul { list-style: none; padding: 0; margin: 0; }
+  .rule li {
+    padding: 6px 0;
+    font-size: 14.5px;
+    color: var(--ink);
+    border-top: 1px solid rgba(20, 58, 85, 0.06);
+  }
+  .rule li:first-child { border-top: 0; }
+
+  /* ---------- Section heading ---------- */
+  .section { margin-top: clamp(48px, 7vw, 80px); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 1px solid var(--hair);
+    padding-bottom: 14px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .section-name {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(24px, 3.4vw, 34px);
+    letter-spacing: -0.025em;
+  }
+  .section-tag {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* ---------- Shot cards ---------- */
+  .shots { margin-top: clamp(24px, 4vw, 36px); display: flex; flex-direction: column; gap: clamp(20px, 3vw, 30px); }
+  .shot {
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 22px;
+    padding: clamp(22px, 3vw, 36px);
+    box-shadow: 0 1px 2px rgba(20, 58, 85, 0.04), 0 22px 48px -28px rgba(20, 58, 85, 0.32);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(20px, 3vw, 36px);
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  .shot:nth-of-type(1) { animation-delay: 0.05s; }
+  .shot:nth-of-type(2) { animation-delay: 0.12s; }
+  .shot:nth-of-type(3) { animation-delay: 0.19s; }
+  .shot:nth-of-type(4) { animation-delay: 0.26s; }
+  .shot:nth-of-type(5) { animation-delay: 0.33s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  .shot-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .shot-num {
+    font-family: var(--display);
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(20, 58, 85, 0.22);
+  }
+  .shot-where {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(46, 110, 142, 0.1);
+    color: var(--harbor);
+  }
+  .shot h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(22px, 2.8vw, 30px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .shot p.desc {
+    font-size: 15px;
+    color: #475a68;
+    margin-bottom: 18px;
+  }
+  .shot .cues {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 16px 0 8px;
+  }
+  .shot ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .shot ul li {
+    padding: 5px 0 5px 22px;
+    font-size: 14px;
+    color: var(--ink);
+    position: relative;
+  }
+  .shot ul li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    background: var(--sage);
+  }
+
+  /* Right column: composed concept + search buttons */
+  .concept {
+    background: linear-gradient(140deg, #efe7d2 0%, #dccfa9 100%);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+  }
+  .concept-vibe {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.35;
+    color: #2a3f4a;
+    letter-spacing: -0.01em;
+  }
+  .concept-meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b7480;
+    line-height: 1.6;
+  }
+  .concept-meta strong { color: var(--ink); font-weight: 600; }
+  .searches { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .search {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 16px;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(20, 58, 85, 0.15);
+    border-radius: 999px;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 13px;
+    transition: background 0.18s, border-color 0.18s, transform 0.18s;
+  }
+  .search:hover {
+    background: #fff;
+    border-color: var(--harbor);
+    transform: translateY(-1px);
+  }
+  .search .src {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .search svg { flex-shrink: 0; }
+
+  /* ---------- Sources strip ---------- */
+  .sources {
+    margin-top: clamp(40px, 6vw, 64px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .source-card {
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .source-card h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .source-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .source-card .pill {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 99px;
+    background: rgba(46, 110, 142, 0.12);
+    color: var(--harbor);
+  }
+  .source-card .pill.paid {
+    background: rgba(166, 64, 37, 0.1);
+    color: #a64025;
+  }
+
+  footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--hair);
+    padding-top: 22px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 760px) {
+    .rules { grid-template-columns: 1fr; }
+    .shot { grid-template-columns: 1fr; }
+    .concept { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Edit Me Lo &nbsp;·&nbsp; Stocked, LLC &nbsp;·&nbsp; For Andre</div>
+    <h1 class="title">Photo <em>direction</em>.</h1>
+    <p class="lede">
+      What kind of photos belong on the Stocked site — and where to find them.
+      Five concept shots mapped to specific sections, with one-click search
+      links into Unsplash and Pexels (filtered for real humans, no AI). Once
+      Andre signs off on the palette, we'll match photo tones to it.
+    </p>
+    <div class="tags">
+      <span class="tag">Real humans only</span>
+      <span class="tag">No AI · no illustration</span>
+      <span class="tag">Candid &gt; posed</span>
+      <span class="tag">Diverse representation</span>
+    </div>
+  </header>
+
+  <!-- ============ Rules ============ -->
+  <section class="rules">
+    <div class="rule do">
+      <h3>✓ Look for</h3>
+      <ul>
+        <li>Hands in action — close-ups of someone placing product on a shelf</li>
+        <li>Candid mid-motion shots, slight background blur</li>
+        <li>Real store lighting (fluorescent or warm interior, not studio)</li>
+        <li>Diverse representation that mirrors Andre + real retail floors</li>
+        <li>Natural focus and depth — not Photoshop-perfect</li>
+      </ul>
+    </div>
+    <div class="rule dont">
+      <h3>✗ Avoid</h3>
+      <ul>
+        <li>Handshake / boardroom clichés</li>
+        <li>Model in a clean apron grinning at the camera</li>
+        <li>Studio-white backgrounds</li>
+        <li>People holding clipboards staring at nothing</li>
+        <li>Anything tagged "AI generated"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ Shot list ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">SHOTS</span>
+      <h2 class="section-name">The shot list</h2>
+      <span class="section-tag">5 concepts · 5 site sections</span>
+    </div>
+    <div class="shots" id="shots"></div>
+  </section>
+
+  <!-- ============ Sources ============ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">SOURCES</span>
+      <h2 class="section-name">Where to source</h2>
+      <span class="section-tag">Free + paid</span>
+    </div>
+    <div class="sources">
+      <div class="source-card">
+        <h4>Unsplash</h4>
+        <p>Best mix of real, high-quality photos. In any search, set the
+          "AI-generated" toggle to <strong>off</strong>.</p>
+        <span class="pill">Free · Commercial OK</span>
+      </div>
+      <div class="source-card">
+        <h4>Pexels</h4>
+        <p>Less AI clutter than Unsplash currently. Strong on retail and
+          workplace photography.</p>
+        <span class="pill">Free · Commercial OK</span>
+      </div>
+      <div class="source-card">
+        <h4>Burst (by Shopify)</h4>
+        <p>Smaller library but retail-focused — built for online sellers, so
+          merchandising shots are abundant.</p>
+        <span class="pill">Free · Commercial OK</span>
+      </div>
+      <div class="source-card">
+        <h4>Adobe Stock</h4>
+        <p>Largest library + reliable "exclude AI" filter. Best for hunting
+          a specific shot you couldn't find free.</p>
+        <span class="pill paid">Paid · Per image</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Prepared by Edit Me Lo · Photo direction · Spring 2026
+  </footer>
+
+</div>
+
+<script>
+  const SHOTS = [
+    {
+      num: "01",
+      where: "Hero",
+      title: "Hands in action",
+      desc: "A tight crop of hands placing or arranging product on a shelf — the strongest single image we can use. Anonymous-but-personal, communicates care + precision in one frame, and works at any size. Could replace or sit beside the illustrated shelf.",
+      cues: [
+        "Tight crop — hands and a few products",
+        "Natural overhead or 45° angle",
+        "Stocked shelves visible but soft",
+        "Warm or neutral fluorescent light",
+      ],
+      vibe: "Care. Precision. Quiet competence.",
+      meta: "Format · Wide or square · Tight crop · Soft DOF",
+      unsplash: "stocking shelves hands",
+      pexels: "hands stocking shelves",
+    },
+    {
+      num: "02",
+      where: "Services · Operational Support",
+      title: "The organized aisle",
+      desc: "A wide angle, slightly tilted, looking down a fully-stocked, faced aisle. The shot communicates the result Stocked delivers without showing any people. Pairs visually with the dark Operational Support card.",
+      cues: [
+        "Wide angle, slight low or eye-level",
+        "Fully-faced shelves, no gaps",
+        "Clean floor, no clutter",
+        "Cool fluorescent OK — feels like a real store",
+      ],
+      vibe: "The room after Stocked left.",
+      meta: "Format · Landscape · Wide · No people OK",
+      unsplash: "organized grocery aisle",
+      pexels: "supermarket aisle shelves",
+    },
+    {
+      num: "03",
+      where: "Services · Brand Ambassador",
+      title: "Warm engagement",
+      desc: "A candid moment — a friendly person mid-conversation with a shopper, or handing them a sample. Should feel like a real interaction, not staged. The opposite emotional register from #02: people-forward, warm.",
+      cues: [
+        "Two people, candid",
+        "Smiling or mid-laugh, not posed",
+        "Natural sample / product / flyer in hand",
+        "Real store setting",
+      ],
+      vibe: "Real conversation. Real warmth.",
+      meta: "Format · Square or portrait · Mid-shot",
+      unsplash: "brand ambassador product sample",
+      pexels: "store demonstration sample",
+    },
+    {
+      num: "04",
+      where: "About / Founder story",
+      title: "The operator",
+      desc: "A purposeful figure walking a store, checking a shelf, or reviewing a plan-o-gram with a clipboard. Stand-in for now — this is where Andre's own photo could eventually go, which would be the strongest move.",
+      cues: [
+        "Single person in motion or focused",
+        "From behind or 3/4 — face not always needed",
+        "Calm authority, not 'stock CEO'",
+        "Aisle, backroom, or stockroom setting",
+      ],
+      vibe: "Twenty years of knowing what to do.",
+      meta: "Format · Portrait or square · Eventually Andre",
+      unsplash: "retail store manager walking aisle",
+      pexels: "store employee checking shelves",
+    },
+    {
+      num: "05",
+      where: "Why Stocked / Credentials",
+      title: "Results in frame",
+      desc: "A clean, flattering shot of a finished shelf, an end-cap display, or a reset aisle. The 'before/after' angle of the brand without spelling it out. Use as background texture behind the Why Stocked headline if helpful.",
+      cues: [
+        "Strong composition — repetition, symmetry",
+        "Saturated product colour against neutral shelf",
+        "Wide enough to crop different ratios",
+        "No people, or distant background figure",
+      ],
+      vibe: "Quiet pride. The shelf does the talking.",
+      meta: "Format · Landscape · Crop-friendly · No people",
+      unsplash: "merchandising display retail",
+      pexels: "grocery store display shelf",
+    },
+  ];
+
+  function unsplashURL(q) {
+    return "https://unsplash.com/s/photos/" +
+      encodeURIComponent(q.replace(/ /g, "-")) +
+      "?orientation=landscape";
+  }
+  function pexelsURL(q) {
+    return "https://www.pexels.com/search/" + encodeURIComponent(q) + "/";
+  }
+  const arrowSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+
+  function shotCard(s) {
+    const el = document.createElement("article");
+    el.className = "shot";
+    el.innerHTML = `
+      <div>
+        <div class="shot-head">
+          <span class="shot-num">${s.num}</span>
+          <span class="shot-where">${s.where}</span>
+        </div>
+        <h2>${s.title}</h2>
+        <p class="desc">${s.desc}</p>
+        <div class="cues">Look for</div>
+        <ul>${s.cues.map(c => `<li>${c}</li>`).join("")}</ul>
+      </div>
+      <div class="concept">
+        <div class="concept-vibe">${s.vibe}</div>
+        <div class="concept-meta">${s.meta.replace(/·/g, "<br>·")}</div>
+        <div class="searches">
+          <a class="search" href="${unsplashURL(s.unsplash)}" target="_blank" rel="noopener">
+            <span><span class="src">Unsplash</span> &nbsp; “${s.unsplash}”</span>${arrowSvg}
+          </a>
+          <a class="search" href="${pexelsURL(s.pexels)}" target="_blank" rel="noopener">
+            <span><span class="src">Pexels</span> &nbsp; “${s.pexels}”</span>${arrowSvg}
+          </a>
+        </div>
+      </div>
+    `;
+    return el;
+  }
+
+  const mount = document.getElementById("shots");
+  SHOTS.forEach(s => mount.appendChild(shotCard(s)));
+</script>
+</body>
+</html>

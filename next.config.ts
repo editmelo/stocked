@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       { source: "/palette-options", destination: "/palette-options.html" },
       { source: "/palette-preview", destination: "/palette-preview.html" },
       { source: "/brand-sheet", destination: "/brand-sheet.html" },
+      { source: "/photo-direction", destination: "/photo-direction.html" },
     ];
   },
 };
