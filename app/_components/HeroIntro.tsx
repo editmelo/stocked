@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 /**
- * Cinematic intro overlay — the Stocked open-box lockup gets "stamped"
- * onto the screen, settles, then zooms toward the viewer to reveal the
- * site beneath it.
+ * Cinematic "unboxing" intro overlay — a cardboard box stamped with the
+ * Stocked brand drops in, settles, opens its flaps, then zooms toward the
+ * viewer to reveal the site.
  *
  * The decision to play is made before first paint by an inline script in
  * layout.tsx, which sets html[data-intro="1"] (once per session, and never
@@ -24,7 +24,7 @@ export function HeroIntro() {
       setVisible(false);
       return;
     }
-    const timer = setTimeout(() => setVisible(false), 1700);
+    const timer = setTimeout(() => setVisible(false), 1750);
     return () => clearTimeout(timer);
   }, []);
 
@@ -55,14 +55,26 @@ export function HeroIntro() {
       </button>
 
       <div className="hero-intro__stage">
-        <Image
-          src="/stocked-logo-open.png"
-          alt=""
-          width={2357}
-          height={485}
-          className="hero-intro__stamp"
-          priority
-        />
+        <div className="intro-box">
+          <div className="intro-box__shadow" />
+
+          {/* Box body — the cardboard front face, stamped with the brand */}
+          <div className="intro-box__body">
+            <div className="intro-box__inner" />
+            <Image
+              src="/stocked-logo-open.png"
+              alt=""
+              width={2357}
+              height={485}
+              className="intro-box__stamp"
+              priority
+            />
+          </div>
+
+          {/* Two top flaps: open → close → open */}
+          <div className="intro-box__flap intro-box__flap--l" />
+          <div className="intro-box__flap intro-box__flap--r" />
+        </div>
       </div>
     </div>
   );

@@ -194,27 +194,126 @@ html[data-intro="1"] .hero-intro {
 }
 
 .hero-intro__stage {
-  width: min(72vw, 540px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  animation: intro-stage 1.52s cubic-bezier(0.5, 0, 0.18, 1) both;
 }
-.hero-intro__stamp {
-  width: 100% !important;
+@keyframes intro-stage {
+  0%   { transform: scale(0.62); opacity: 0; }
+  13%  { transform: scale(1.05); opacity: 1; }
+  20%  { transform: scale(1); }
+  68%  { transform: scale(1); opacity: 1; }
+  100% { transform: scale(7.5); opacity: 0; }
+}
+
+.intro-box {
+  position: relative;
+  width: 340px;
+  height: 330px;
+}
+
+.intro-box__shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  width: 262px;
+  height: 44px;
+  margin-left: -131px;
+  background: radial-gradient(ellipse, rgba(14, 42, 62, 0.26), transparent 70%);
+  animation: intro-shadow 1.52s cubic-bezier(0.5, 0, 0.18, 1) both;
+}
+@keyframes intro-shadow {
+  0%, 13%  { transform: scaleX(0.7); opacity: 0; }
+  20%      { transform: scaleX(1); opacity: 1; }
+  39%      { transform: scaleX(1.14); }
+  45%      { transform: scaleX(1); }
+  68%, 100%{ transform: scaleX(1); opacity: 1; }
+}
+
+.intro-box__body {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  height: 208px;
+  z-index: 2;
+  background: linear-gradient(176deg, #e4dac2 0%, #d4c8a9 100%);
+  border: 5px solid var(--color-pine);
+  border-radius: 5px 5px 27px 27px;
+  transform-origin: bottom center;
+  animation: intro-squash 1.52s cubic-bezier(0.5, 0, 0.18, 1) both;
+}
+@keyframes intro-squash {
+  0%, 34%   { transform: scaleY(1) scaleX(1); }
+  39%       { transform: scaleY(0.9) scaleX(1.06); }
+  45%       { transform: scaleY(1.03) scaleX(0.99); }
+  50%, 100% { transform: scaleY(1) scaleX(1); }
+}
+
+.intro-box__inner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 26px;
+  background: linear-gradient(180deg, #9c8e6c, #b8aa86);
+  border-radius: 1px;
+}
+
+/* The brand stamp printed across the cardboard's front face. */
+.intro-box__stamp {
+  position: absolute !important;
+  left: 8% !important;
+  right: 8% !important;
+  top: 56px !important;
+  width: 84% !important;
   height: auto !important;
-  transform-origin: center center;
-  animation: intro-stamp 1.45s cubic-bezier(0.5, 0, 0.18, 1) both;
-  filter: drop-shadow(0 12px 24px rgba(14, 42, 62, 0.16));
+  object-fit: contain;
+  opacity: 0.94;
+  mix-blend-mode: multiply;
+  animation: intro-stamp-in 1.52s cubic-bezier(0.34, 1.4, 0.5, 1) both;
 }
-@keyframes intro-stamp {
-  /* Stamps in fast with a tilt + overshoot, settles, then zooms toward the viewer. */
-  0%   { transform: scale(0.42) translateY(-44px) rotate(-3deg); opacity: 0; }
-  14%  { transform: scale(1.08) translateY(0) rotate(2deg); opacity: 1; }
-  20%  { transform: scale(0.97) rotate(-1deg); }
-  26%  { transform: scale(1.02) rotate(0.3deg); }
-  32%  { transform: scale(1) rotate(0deg); }
-  62%  { transform: scale(1); opacity: 1; }
-  100% { transform: scale(5.4); opacity: 0; }
+@keyframes intro-stamp-in {
+  /* Stamp slams down right as the box lands, just before the flaps close over it. */
+  0%, 14%  { opacity: 0; transform: scale(1.45) rotate(-4deg); }
+  22%      { opacity: 0.94; transform: scale(0.97) rotate(1deg); }
+  28%      { opacity: 0.94; transform: scale(1.02) rotate(0deg); }
+  34%, 100%{ opacity: 0.94; transform: scale(1) rotate(0deg); }
+}
+
+.intro-box__flap {
+  position: absolute;
+  bottom: 185px;
+  width: 164px;
+  height: 43px;
+  z-index: 4;
+  background: linear-gradient(178deg, #f2e9d5, #e7dcc1);
+  border: 5px solid var(--color-pine);
+  border-radius: 8px 8px 3px 3px;
+}
+.intro-box__flap--l {
+  left: 10px;
+  transform-origin: left center;
+  animation: intro-flap-l 1.52s cubic-bezier(0.5, 0, 0.18, 1) both;
+}
+.intro-box__flap--r {
+  right: 10px;
+  transform-origin: right center;
+  animation: intro-flap-r 1.52s cubic-bezier(0.5, 0, 0.18, 1) both;
+}
+@keyframes intro-flap-l {
+  0%, 13%  { transform: rotate(-116deg); }
+  34%      { transform: rotate(0deg); }
+  40%      { transform: rotate(6deg); }
+  45%      { transform: rotate(0deg); }
+  64%      { transform: rotate(-124deg); }
+  100%     { transform: rotate(-119deg); }
+}
+@keyframes intro-flap-r {
+  0%, 13%  { transform: rotate(116deg); }
+  34%      { transform: rotate(0deg); }
+  40%      { transform: rotate(-6deg); }
+  45%      { transform: rotate(0deg); }
+  64%      { transform: rotate(124deg); }
+  100%     { transform: rotate(119deg); }
 }
 
 /* ============================================================

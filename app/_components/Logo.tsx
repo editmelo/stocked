@@ -6,23 +6,22 @@ type LogoProps = {
   size?: number;
 };
 
-// Intrinsic dimensions of public/stocked-logo.png (the horizontal lockup).
+// Intrinsic dimensions of public/stocked-logo*.png (the horizontal lockups).
 const LOGO_W = 2881;
 const LOGO_H = 674;
 
 export function Logo({ variant = "dark", size = 36 }: LogoProps) {
   const width = Math.round((size * LOGO_W) / LOGO_H);
-  // For the dark-background variant, knock the whole lockup out to cream.
-  const filter = variant === "light" ? "brightness(0) invert(1)" : undefined;
+  const src = variant === "light" ? "/stocked-logo-white.png" : "/stocked-logo.png";
 
   return (
     <Image
-      src="/stocked-logo.png"
+      src={src}
       alt="Stocked"
       width={width}
       height={size}
       priority
-      style={{ width: "auto", height: size, filter }}
+      style={{ width: "auto", height: size }}
     />
   );
 }
