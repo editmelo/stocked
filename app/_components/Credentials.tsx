@@ -74,8 +74,8 @@ function CredentialCard({
           >
             <path
               d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2 2-7z"
-              fill="#dfd6c1"
-              stroke="#1b3a4b"
+              fill="#e6bb47"
+              stroke="#143a55"
               strokeWidth="1.5"
               strokeLinejoin="round"
             />

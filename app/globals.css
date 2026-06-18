@@ -1,41 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  /* Harbor — crisp, refreshing, dependable blue */
-  --color-teal-50: #edf3f5;
-  --color-teal-100: #d4e4e9;
-  --color-teal-200: #aacdd6;
-  --color-teal-300: #7eb0bd;
-  --color-teal-400: #4f97ad;
-  --color-teal-500: #3a8197;
-  --color-teal-600: #2e6e8e;
-  --color-teal-700: #245770;
-  --color-teal-800: #1f4659;
-  --color-teal-900: #1b3a4b;
-  --color-teal-950: #132834;
+  /* Lift — brighter, livelier blue (primary brand) */
+  --color-teal-50: #ecf3f7;
+  --color-teal-100: #d2e6f0;
+  --color-teal-200: #a8cee0;
+  --color-teal-300: #79b6cf;
+  --color-teal-400: #4db0ce;
+  --color-teal-500: #2e9ec3;
+  --color-teal-600: #1f88ae;
+  --color-teal-700: #155a78;
+  --color-teal-800: #134c66;
+  --color-teal-900: #143a55;
+  --color-teal-950: #0e2a3e;
 
-  /* Harbor — eucalyptus & sage-mist greens */
-  --color-sage-50: #eef4f0;
-  --color-sage-100: #e2ede6;
-  --color-sage-200: #c7ddce;
-  --color-sage-300: #a9c3b0;
-  --color-sage-400: #7ba38c;
-  --color-sage-500: #5f8a72;
-  --color-sage-600: #4c6a56;
-  --color-sage-700: #3a5343;
+  /* Lift — mint glow & fresh green */
+  --color-sage-50: #f0f6f3;
+  --color-sage-100: #dfeee5;
+  --color-sage-200: #d8ecde;
+  --color-sage-300: #bfdfca;
+  --color-sage-400: #7cbe96;
+  --color-sage-500: #5fa67a;
+  --color-sage-600: #4a8862;
+  --color-sage-700: #38694b;
 
-  /* Harbor — warm greige neutrals */
-  --color-tan-50: #f8f5ee;
-  --color-tan-100: #efe9da;
-  --color-tan-200: #dfd6c1;
-  --color-tan-300: #cbbd9e;
-  --color-tan-400: #b5a47e;
-  --color-tan-500: #9a8862;
+  /* Lift — warm sand neutrals */
+  --color-tan-50: #f9f3e2;
+  --color-tan-100: #f2ead5;
+  --color-tan-200: #f1dfb1;
+  --color-tan-300: #e0c684;
+  --color-tan-400: #c5a85b;
+  --color-tan-500: #a48942;
 
-  --color-cream: #f9f7f0;
-  --color-bone: #f0ecdf;
-  --color-pine: #1b3a4b;
-  --color-ink: #132834;
+  --color-cream: #fbf8ee;
+  --color-bone: #f2ead5;
+  --color-pine: #143a55;
+  --color-ink: #0e2a3e;
+
+  /* Lift — Sunray Gold (pop accent for badges, highlights, small surprises) */
+  --color-gold: #e6bb47;
 
   --font-display: var(--font-manrope), "Manrope", system-ui, -apple-system, sans-serif;
   --font-body: var(--font-dm-sans), "DM Sans", system-ui, -apple-system, sans-serif;
@@ -43,8 +46,8 @@
   --radius-card: 1.25rem;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 1px 2px rgba(19, 40, 52, 0.04), 0 8px 24px rgba(19, 40, 52, 0.07);
-  --shadow-lifted: 0 2px 4px rgba(19, 40, 52, 0.05), 0 16px 40px rgba(19, 40, 52, 0.12);
+  --shadow-soft: 0 1px 2px rgba(14, 42, 62, 0.04), 0 8px 24px rgba(14, 42, 62, 0.07);
+  --shadow-lifted: 0 2px 4px rgba(14, 42, 62, 0.05), 0 16px 40px rgba(14, 42, 62, 0.12);
 }
 
 @layer base {
@@ -106,15 +109,15 @@
 
   /* Subtle wash separators between sections */
   .wash-top {
-    background-image: linear-gradient(to bottom, rgba(123, 163, 140, 0.14), transparent 30%);
+    background-image: linear-gradient(to bottom, rgba(124, 190, 150, 0.16), transparent 30%);
   }
   .wash-bottom {
-    background-image: linear-gradient(to top, rgba(223, 214, 193, 0.22), transparent 30%);
+    background-image: linear-gradient(to top, rgba(241, 223, 177, 0.28), transparent 30%);
   }
 
-  /* Hand-drawn underline accent */
+  /* Hand-drawn underline accent — Lift's Sunray Gold for the pop */
   .underline-sketch {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 7 Q 50 1, 100 5 T 198 6' stroke='%237ba38c' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M2 7 Q 50 1, 100 5 T 198 6' stroke='%23e6bb47' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 100% 0.5em;

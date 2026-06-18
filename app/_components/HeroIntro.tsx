@@ -60,7 +60,7 @@ export function HeroIntro() {
             <svg width="100%" height="100%" viewBox="0 0 48 48" fill="none">
               <path
                 d="M9 14 H39 M24 14 V42"
-                stroke="#2e6e8e"
+                stroke="#1f88ae"
                 strokeWidth="9.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"

@@ -29,26 +29,26 @@ type Product = { w: number; h: number; fill: string };
 // Three shelves with distinct product layouts. indexOffset values: 0, 6, 10.
 const LAYOUTS: Product[][] = [
   [
-    { w: 14, h: 28, fill: "#2e6e8e" },
-    { w: 18, h: 36, fill: "#7ba38c" },
-    { w: 14, h: 30, fill: "#cbbd9e" },
-    { w: 12, h: 26, fill: "#2e6e8e" },
-    { w: 20, h: 38, fill: "#dfd6c1" },
-    { w: 14, h: 28, fill: "#4f97ad" },
+    { w: 14, h: 28, fill: "#1f88ae" },
+    { w: 18, h: 36, fill: "#7cbe96" },
+    { w: 14, h: 30, fill: "#e0c684" },
+    { w: 12, h: 26, fill: "#1f88ae" },
+    { w: 20, h: 38, fill: "#f1dfb1" },
+    { w: 14, h: 28, fill: "#4db0ce" },
   ],
   [
-    { w: 22, h: 32, fill: "#dfd6c1" },
-    { w: 18, h: 32, fill: "#2e6e8e" },
-    { w: 18, h: 32, fill: "#7ba38c" },
-    { w: 22, h: 32, fill: "#cbbd9e" },
+    { w: 22, h: 32, fill: "#f1dfb1" },
+    { w: 18, h: 32, fill: "#1f88ae" },
+    { w: 18, h: 32, fill: "#7cbe96" },
+    { w: 22, h: 32, fill: "#e0c684" },
   ],
   [
-    { w: 12, h: 24, fill: "#7ba38c" },
-    { w: 16, h: 30, fill: "#2e6e8e" },
-    { w: 14, h: 26, fill: "#cbbd9e" },
-    { w: 16, h: 32, fill: "#4f97ad" },
-    { w: 14, h: 28, fill: "#dfd6c1" },
-    { w: 12, h: 22, fill: "#4c6a56" },
+    { w: 12, h: 24, fill: "#7cbe96" },
+    { w: 16, h: 30, fill: "#1f88ae" },
+    { w: 14, h: 26, fill: "#e0c684" },
+    { w: 16, h: 32, fill: "#4db0ce" },
+    { w: 14, h: 28, fill: "#f1dfb1" },
+    { w: 12, h: 22, fill: "#e6bb47" },
   ],
 ];
 
@@ -142,19 +142,19 @@ export function HeroShelf() {
         <svg width="92" height="92" viewBox="0 0 100 100" aria-hidden="true">
           <path
             d="M16 38 L16 80 L84 80 L84 38"
-            fill="#dfd6c1"
-            stroke="#1b3a4b"
+            fill="#f1dfb1"
+            stroke="#143a55"
             strokeWidth="2.5"
             strokeLinejoin="round"
           />
           <path
             d="M16 38 L24 22 L76 22 L84 38 Z"
-            fill="#efe9da"
-            stroke="#1b3a4b"
+            fill="#f2ead5"
+            stroke="#143a55"
             strokeWidth="2.5"
             strokeLinejoin="round"
           />
-          <path d="M50 22 L50 80" stroke="#1b3a4b" strokeWidth="2.5" strokeDasharray="4 4" />
+          <path d="M50 22 L50 80" stroke="#143a55" strokeWidth="2.5" strokeDasharray="4 4" />
         </svg>
       </div>
 

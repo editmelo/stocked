@@ -6,7 +6,7 @@ export function ServiceArea() {
         className="absolute inset-0 opacity-25"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(223,214,193,0.4) 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, rgba(241,223,177,0.45) 1px, transparent 0)",
           backgroundSize: "24px 24px",
         }}
         aria-hidden="true"
@@ -67,8 +67,8 @@ function MidwestMap() {
       {/* Soft halo */}
       <defs>
         <radialGradient id="halo" cx="50%" cy="60%" r="50%">
-          <stop offset="0%" stopColor="#7ba38c" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#7ba38c" stopOpacity="0" />
+          <stop offset="0%" stopColor="#7cbe96" stopOpacity="0.45" />
+          <stop offset="100%" stopColor="#7cbe96" stopOpacity="0" />
         </radialGradient>
       </defs>
       <circle cx="50" cy="60" r="48" fill="url(#halo)" />
@@ -76,8 +76,8 @@ function MidwestMap() {
       {/* Abstract midwest landmass blob */}
       <path
         d="M20 25 Q 40 18, 60 22 T 88 38 Q 92 55, 85 72 T 60 88 Q 38 92, 22 80 T 10 50 Q 12 32, 20 25 Z"
-        fill="rgba(249,247,240,0.06)"
-        stroke="rgba(223,214,193,0.4)"
+        fill="rgba(251,248,238,0.07)"
+        stroke="rgba(241,223,177,0.45)"
         strokeWidth="0.5"
         strokeDasharray="2 2"
       />
@@ -90,7 +90,7 @@ function MidwestMap() {
           y1="60"
           x2={c.x}
           y2={c.y}
-          stroke="#dfd6c1"
+          stroke="#f1dfb1"
           strokeWidth="0.3"
           strokeDasharray="1 1.5"
           opacity="0.6"
@@ -106,7 +106,7 @@ function MidwestMap() {
               cy={c.y}
               r="4"
               fill="none"
-              stroke="#dfd6c1"
+              stroke="#f1dfb1"
               strokeWidth="0.4"
               opacity="0.7"
             >
@@ -118,8 +118,8 @@ function MidwestMap() {
             cx={c.x}
             cy={c.y}
             r={c.primary ? 2 : 1.2}
-            fill={c.primary ? "#dfd6c1" : "#7ba38c"}
-            stroke="#f9f7f0"
+            fill={c.primary ? "#f1dfb1" : "#7cbe96"}
+            stroke="#fbf8ee"
             strokeWidth="0.3"
           />
           {c.primary && (
@@ -128,7 +128,7 @@ function MidwestMap() {
               y={c.y - 5}
               textAnchor="middle"
               fontSize="3"
-              fill="#f9f7f0"
+              fill="#fbf8ee"
               fontFamily="system-ui"
               fontWeight="700"
             >

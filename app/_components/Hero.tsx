@@ -7,7 +7,7 @@ export function Hero() {
       className="relative overflow-hidden"
       style={{
         background:
-          "radial-gradient(ellipse at top right, rgba(123,163,140,0.28), transparent 55%), radial-gradient(ellipse at bottom left, rgba(223,214,193,0.4), transparent 50%), var(--color-cream)",
+          "radial-gradient(ellipse at top right, rgba(124,190,150,0.30), transparent 55%), radial-gradient(ellipse at bottom left, rgba(241,223,177,0.45), transparent 50%), var(--color-cream)",
       }}
     >
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-28 md:pt-28 md:pb-36 grid md:grid-cols-12 gap-12 items-center">

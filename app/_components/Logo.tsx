@@ -5,9 +5,9 @@ type LogoProps = {
 };
 
 export function Logo({ variant = "dark", size = 32, showWordmark = true }: LogoProps) {
-  const stroke = variant === "dark" ? "#1b3a4b" : "#f9f7f0";
-  const accent = variant === "dark" ? "#2e6e8e" : "#a9c3b0";
-  const tan = "#dfd6c1";
+  const stroke = variant === "dark" ? "#143a55" : "#fbf8ee";
+  const accent = variant === "dark" ? "#1f88ae" : "#bfdfca";
+  const tan = "#f1dfb1";
 
   return (
     <div className="flex items-center gap-2.5">

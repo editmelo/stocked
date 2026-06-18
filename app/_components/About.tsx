@@ -69,14 +69,14 @@ function FloatingBoxes() {
     <>
       <div className="absolute -top-5 -right-5 animate-float" style={{ animationDelay: "0.4s" }}>
         <svg width="64" height="64" viewBox="0 0 100 100" aria-hidden="true">
-          <path d="M16 38 L16 80 L84 80 L84 38" fill="#dfd6c1" stroke="#1b3a4b" strokeWidth="3" strokeLinejoin="round" />
-          <path d="M16 38 L24 22 L76 22 L84 38 Z" fill="#efe9da" stroke="#1b3a4b" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M16 38 L16 80 L84 80 L84 38" fill="#f1dfb1" stroke="#143a55" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M16 38 L24 22 L76 22 L84 38 Z" fill="#f2ead5" stroke="#143a55" strokeWidth="3" strokeLinejoin="round" />
         </svg>
       </div>
       <div className="absolute -bottom-6 -left-6 animate-float" style={{ animationDelay: "1.2s" }}>
         <svg width="56" height="56" viewBox="0 0 100 100" aria-hidden="true">
-          <path d="M16 38 L16 80 L84 80 L84 38" fill="#7ba38c" stroke="#1b3a4b" strokeWidth="3" strokeLinejoin="round" />
-          <path d="M16 38 L24 22 L76 22 L84 38 Z" fill="#c7ddce" stroke="#1b3a4b" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M16 38 L16 80 L84 80 L84 38" fill="#7cbe96" stroke="#143a55" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M16 38 L24 22 L76 22 L84 38 Z" fill="#bfdfca" stroke="#143a55" strokeWidth="3" strokeLinejoin="round" />
         </svg>
       </div>
     </>

@@ -119,8 +119,8 @@ function ServiceCard({
       style={{
         background: isOps ? "var(--color-teal-700)" : "var(--color-bone)",
         borderColor: isOps
-          ? "rgba(123,163,140,0.3)"
-          : "rgba(27,58,75,0.1)",
+          ? "rgba(124,190,150,0.32)"
+          : "rgba(20,58,85,0.1)",
         color: isOps ? "var(--color-cream)" : "var(--color-pine)",
       }}
     >
@@ -168,14 +168,14 @@ function ServiceCard({
             <span
               className="mt-1 flex-shrink-0 size-6 rounded-md flex items-center justify-center"
               style={{
-                background: isOps ? "rgba(123,163,140,0.28)" : "var(--color-sage-100)",
+                background: isOps ? "rgba(124,190,150,0.30)" : "var(--color-sage-100)",
               }}
               aria-hidden="true"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M5 13l4 4L19 7"
-                  stroke={isOps ? "#c7ddce" : "#3a5343"}
+                  stroke={isOps ? "#bfdfca" : "#38694b"}
                   strokeWidth="3"
                   strokeLinecap="round"
                   strokeLinejoin="round"
