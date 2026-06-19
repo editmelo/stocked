@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function WhyStocked() {
   const reasons = [
     {
@@ -30,18 +32,29 @@ export function WhyStocked() {
       }}
     >
       <div className="mx-auto max-w-7xl px-6">
-        <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-600">
-            Why Stocked
-          </p>
-          <h2 className="mt-4 font-display text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight text-balance">
-            You can count on Stocked.
-          </h2>
-          <p className="mt-5 text-lg text-pine/70 text-pretty leading-relaxed">
-            Retail support shouldn't be something you worry about. Our promise
-            is simple — show up, do the work with care, and make your
-            operations easier, not harder.
-          </p>
+        <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="md:col-span-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sage-600">
+              Why Stocked
+            </p>
+            <h2 className="mt-4 font-display text-4xl md:text-6xl font-extrabold leading-[1.05] tracking-tight text-balance">
+              You can count on Stocked.
+            </h2>
+            <p className="mt-5 text-lg text-pine/70 text-pretty leading-relaxed">
+              Retail support shouldn't be something you worry about. Our promise
+              is simple — show up, do the work with care, and make your
+              operations easier, not harder.
+            </p>
+          </div>
+          <div className="md:col-span-6 relative aspect-[5/4] md:aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lifted border border-pine/10">
+            <Image
+              src="/photos/why-stocked-aisle.jpg"
+              alt="A fully stocked, organized grocery aisle — the result of Stocked's work."
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className="mt-16 grid md:grid-cols-3 gap-6">

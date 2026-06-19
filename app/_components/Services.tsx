@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Service = {
   title: string;
   description: string;
@@ -85,6 +87,8 @@ export function Services() {
             title="Operational Support"
             blurb="Keeping your retail environment organized, efficient, and customer-ready."
             services={operational}
+            imageSrc="/photos/services-operational.jpg"
+            imageAlt="A retail worker carefully placing product on a shelf."
           />
           <ServiceCard
             kind="ambassador"
@@ -105,17 +109,21 @@ function ServiceCard({
   title,
   blurb,
   services,
+  imageSrc,
+  imageAlt,
 }: {
   kind: "ops" | "ambassador";
   eyebrow: string;
   title: string;
   blurb: string;
   services: Service[];
+  imageSrc?: string;
+  imageAlt?: string;
 }) {
   const isOps = kind === "ops";
   return (
     <div
-      className="relative rounded-[2rem] p-8 md:p-10 shadow-soft border overflow-hidden"
+      className="relative rounded-[2rem] shadow-soft border overflow-hidden"
       style={{
         background: isOps ? "var(--color-teal-700)" : "var(--color-bone)",
         borderColor: isOps
@@ -124,6 +132,18 @@ function ServiceCard({
         color: isOps ? "var(--color-cream)" : "var(--color-pine)",
       }}
     >
+      {imageSrc && (
+        <div className="relative h-44 md:h-56 w-full overflow-hidden">
+          <Image
+            src={imageSrc}
+            alt={imageAlt ?? ""}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+      )}
+      <div className="p-8 md:p-10 relative">
       {/* Decorative box */}
       <svg
         className="absolute -bottom-6 -right-6 opacity-15"
@@ -195,6 +215,7 @@ function ServiceCard({
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 }
