@@ -62,10 +62,10 @@ export function HeroIntro() {
           <div className="intro-box__body">
             <div className="intro-box__inner" />
             <Image
-              src="/stocked-logo-open.png"
+              src="/stocked-logo-wordmark.png"
               alt=""
-              width={2357}
-              height={485}
+              width={2084}
+              height={400}
               className="intro-box__stamp"
               priority
             />

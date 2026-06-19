@@ -261,10 +261,10 @@ html[data-intro="1"] .hero-intro {
 /* The brand stamp printed across the cardboard's front face. */
 .intro-box__stamp {
   position: absolute !important;
-  left: 8% !important;
-  right: 8% !important;
-  top: 56px !important;
-  width: 84% !important;
+  left: 6% !important;
+  right: 6% !important;
+  top: 78px !important;
+  width: 88% !important;
   height: auto !important;
   object-fit: contain;
   opacity: 0.94;
