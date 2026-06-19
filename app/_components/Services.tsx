@@ -96,6 +96,9 @@ export function Services() {
             title="Brand Ambassador"
             blurb="Representing your brand on the floor with professionalism and warmth."
             services={ambassador}
+            imageSrc="/photos/services-ambassador.jpg"
+            imageAlt="A brand ambassador helping a customer at a counter."
+            imagePosition="bottom"
           />
         </div>
       </div>
@@ -111,6 +114,7 @@ function ServiceCard({
   services,
   imageSrc,
   imageAlt,
+  imagePosition = "top",
 }: {
   kind: "ops" | "ambassador";
   eyebrow: string;
@@ -119,11 +123,23 @@ function ServiceCard({
   services: Service[];
   imageSrc?: string;
   imageAlt?: string;
+  imagePosition?: "top" | "bottom";
 }) {
   const isOps = kind === "ops";
+  const image = imageSrc && (
+    <div className="relative h-44 md:h-56 w-full overflow-hidden">
+      <Image
+        src={imageSrc}
+        alt={imageAlt ?? ""}
+        fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover"
+      />
+    </div>
+  );
   return (
     <div
-      className="relative rounded-[2rem] shadow-soft border overflow-hidden"
+      className="relative rounded-[2rem] shadow-soft border overflow-hidden flex flex-col"
       style={{
         background: isOps ? "var(--color-teal-700)" : "var(--color-bone)",
         borderColor: isOps
@@ -132,18 +148,8 @@ function ServiceCard({
         color: isOps ? "var(--color-cream)" : "var(--color-pine)",
       }}
     >
-      {imageSrc && (
-        <div className="relative h-44 md:h-56 w-full overflow-hidden">
-          <Image
-            src={imageSrc}
-            alt={imageAlt ?? ""}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
-        </div>
-      )}
-      <div className="p-8 md:p-10 relative">
+      {imagePosition === "top" && image}
+      <div className="p-8 md:p-10 relative flex-1">
       {/* Decorative box */}
       <svg
         className="absolute -bottom-6 -right-6 opacity-15"
@@ -216,6 +222,7 @@ function ServiceCard({
         ))}
       </ul>
       </div>
+      {imagePosition === "bottom" && image}
     </div>
   );
 }
