@@ -6,6 +6,7 @@ import { Services } from "./_components/Services";
 import { WhyStocked } from "./_components/WhyStocked";
 import { About } from "./_components/About";
 import { Credentials } from "./_components/Credentials";
+import { SupportingPartner } from "./_components/SupportingPartner";
 import { ServiceArea } from "./_components/ServiceArea";
 import { Contact } from "./_components/Contact";
 import { Footer } from "./_components/Footer";
@@ -21,6 +22,7 @@ export default function Home() {
       <WhyStocked />
       <About />
       <Credentials />
+      <SupportingPartner />
       <ServiceArea />
       <Contact />
       <Footer />
