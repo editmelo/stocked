@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-const CONTACT_EMAIL = "Stockedbiz@yahoo.com";
-const CONTACT_PHONE = "317-640-1013";
+const CONTACT_EMAIL = "andre@stockedplus.com";
+const CONTACT_PHONE = "317-389-8962";
 
 export function Contact() {
   const [name, setName] = useState("");

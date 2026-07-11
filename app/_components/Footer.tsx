@@ -34,18 +34,18 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-cream/80">
               <li>
                 <a
-                  href="mailto:Stockedbiz@yahoo.com"
+                  href="mailto:andre@stockedplus.com"
                   className="hover:text-tan-200 transition-colors"
                 >
-                  Stockedbiz@yahoo.com
+                  andre@stockedplus.com
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:3176401013"
+                  href="tel:3173898962"
                   className="hover:text-tan-200 transition-colors"
                 >
-                  317-640-1013
+                  317-389-8962
                 </a>
               </li>
               <li>Indianapolis, IN</li>
